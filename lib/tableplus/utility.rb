@@ -27,7 +27,7 @@ class TablePlus
         next unless $CHILD_STATUS.success?
 
         output = output.split("\n").find { |o| o.match(/SharedConnectionPath/) }
-        output.match(/"(.+)"/)[1]
+        output.match(/"(.+)"/)&.[](1) || "#{ENV['HOME']}/Library/Application Support/com.tinyapp.TablePlus/Data"
       end.compact.first
     end
 
